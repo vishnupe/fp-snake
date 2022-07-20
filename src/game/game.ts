@@ -124,7 +124,7 @@ function toGrid(game: GameState): Grid {
     return grid;
 }
 function createRandomGame(): GameState {
-    const gameBoardMetric: BoardMetric = boardMetric(30, 30);
+    const gameBoardMetric: BoardMetric = boardMetric(20, 20);
     const initDirection = randomDirection();
     const snakeHead = snakePart(initDirection, randomPoint(gameBoardMetric));
     const gameSnake: Snake = snake([
@@ -165,6 +165,7 @@ const toDirection = cond([
 ]);
 export default (node: HTMLElement | null) => {
     const game = createRandomGame();
+    game.snake = grow(game.snake, game.boardMetric);
     game.snake = grow(game.snake, game.boardMetric);
     game.snake = grow(game.snake, game.boardMetric);
     setInterval(() => {
