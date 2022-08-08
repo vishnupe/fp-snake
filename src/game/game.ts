@@ -91,10 +91,10 @@ function headOfSnake(snake: Snake): SnakePart {
 }
 const delta = cond([
     [equals("NORTH" as Direction), always({ dx: 0, dy: -1 })],
-    [equals("SOUTH" as Direction), always({ dx: 0, dy: 1 })],
-    [equals("EAST" as Direction), always({ dx: 1, dy: 0 })],
-    [equals("WEST" as Direction), always({ dx: -1, dy: 0 })],
-    [equals("INVALID" as Direction), always({ dx: 0, dy: 0 })],
+    [equals("SOUTH"), always({ dx: 0, dy: 1 })],
+    [equals("EAST"), always({ dx: 1, dy: 0 })],
+    [equals("WEST"), always({ dx: -1, dy: 0 })],
+    [equals("INVALID"), always({ dx: 0, dy: 0 })],
 ]);
 const translate = (point: Point, translationDelta: Delta, boardMetric: BoardMetric) => {
     return {
@@ -177,9 +177,9 @@ function renderGameOnHTML(game: GameState, node: HTMLElement | null): void {
 }
 const toDirection = cond([
     [equals("ArrowUp" as NavigationKey), always("NORTH" as Direction)],
-    [equals("ArrowDown" as NavigationKey), always("SOUTH" as Direction)],
-    [equals("ArrowLeft" as NavigationKey), always("WEST" as Direction)],
-    [equals("ArrowRight" as NavigationKey), always("EAST" as Direction)],
+    [equals("ArrowDown"), always("SOUTH" as Direction)],
+    [equals("ArrowLeft"), always("WEST" as Direction)],
+    [equals("ArrowRight"), always("EAST" as Direction)],
     [T, always("INVALID" as Direction)],
 ]);
 export default (node: HTMLElement | null) => {
